@@ -1,0 +1,71 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--bg-color, transparent);
+  padding-inline: 10px;
+  padding-block: 7px;
+  color: var(--text-color, #105dbe);
+  border: 2px solid #105dbe;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--bg-hover, #cae2ff);
+}
+
+.button .button__icon {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  aspect-ratio: 1 / 1;
+}
+
+.button .button__icon > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(90%) saturate(2339%)
+    hue-rotate(205deg) brightness(96%) contrast(88%);
+}
+
+.button .button__label {
+  font-size: unset;
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.button.prime {
+  --bg-color: #105dbe;
+  --text-color: #fff;
+}
+
+.button.secondary {
+  --bg-color: #ff0000;
+  --text-color: #fff;
+}
+
+.button.prime,
+.button.secondary {
+  border: none;
+}
+
+.button.prime .button__icon > img,
+.button.secondary .button__icon > img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7493%)
+    hue-rotate(319deg) brightness(115%) contrast(99%);
+}
+
+.button.prime:hover {
+  --bg-hover: #287de9;
+}
+
+.button.secondary:hover {
+  --bg-hover: #e80101;
+}

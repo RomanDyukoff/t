@@ -1,0 +1,41 @@
+.read {
+  flex-shrink: 0;
+  max-width: 80px;
+  width: 100%;
+  padding-inline: 10px;
+  padding-block: 5px;
+  border: 2px solid var(--border-color, #000);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.read .read-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: var(--text-color, #000);
+}
+
+.read.normal {
+  --border-color: #105dbe;
+}
+
+.read.normal .read-input {
+  --text-color: #105dbe;
+}
+
+.read.increased {
+  --border-color: #ff0000;
+}
+
+.read.increased .read-input {
+  --text-color: #ff0000;
+}
+
+.read.decreased {
+  --border-color: #19aa0e;
+}
+
+.read.decreased .read-input {
+  --text-color: #19aa0e;
+}
