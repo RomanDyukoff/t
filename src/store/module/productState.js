@@ -20,6 +20,12 @@ const mutations = {
   setExchangeRate(state, rate) {
     state.exchangeRate = rate;
   },
+  updateQuantity(state, { id, quantityChange }) {
+    const product = state.goods.find((good) => good.T === id);
+    if (product) {
+      product.P += quantityChange;
+    }
+  },
 };
 
 const actions = {
@@ -47,6 +53,9 @@ const actions = {
     } catch (error) {
       console.error("Error updating data:", error.message);
     }
+  },
+  updateProductQuantity({ commit }, payload) {
+    commit("updateQuantity", payload);
   },
 };
 

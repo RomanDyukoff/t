@@ -1,10 +1,3 @@
-// const parsePrice = (priceString) => {
-//   const numericValue = parseFloat(priceString.replace(/[^0-9.-]+/g, ""));
-//   return isNaN(numericValue) ? 0 : numericValue;
-// };
-
-// const formatPrice = (price) => `₽ ${price.toFixed(2)}`;
-
 const state = {
   carts: [],
 };
@@ -41,16 +34,32 @@ const mutations = {
 };
 
 const actions = {
-  addToCart({ commit }, { category, item }) {
+  addToCart({ commit, dispatch }, { category, item }) {
     commit("ADD_TO_CART", { category, item });
+    dispatch(
+      "product/updateProductQuantity",
+      { id: item.id, quantityChange: -1 },
+      { root: true }
+    );
   },
-  removeFromCart({ commit }, itemId) {
-    commit("REMOVE_FROM_CART", itemId);
+  removeFromCart({ commit, dispatch }, item) {
+    commit("REMOVE_FROM_CART", item.id);
+    dispatch(
+      "product/updateProductQuantity",
+      { id: item.id, quantityChange: 1 },
+      { root: true }
+    );
   },
 };
 
 const getters = {
   carts: (state) => state.carts,
+  cartTotalPrice: (state) =>
+    state.carts.reduce((total, item) => {
+      const productPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+      const itemTotalPrice = productPrice * item.quantity;
+      return total + itemTotalPrice;
+    }, 0),
 };
 
 const cartState = { namespaced: true, state, mutations, actions, getters };

@@ -1,5 +1,8 @@
 <template>
-  <div :id="`${id}`" class="details-content">
+  <div
+    :id="`${id}`"
+    :class="`details-content ${quantity === 0 ? 'disable' : ''}`"
+  >
     <p class="details-conten__text">{{ name }} {{ `(${quantity})` }}</p>
     <MonitorInput :value="price" />
     <CustomButton
@@ -47,15 +50,17 @@ export default {
   methods: {
     ...mapActions("cart", ["addToCart"]),
     handelProduct() {
-      this.addToCart({
-        category: this.category,
-        item: {
-          id: this.id,
-          name: this.name,
-          quantity: this.quantity,
-          price: this.price,
-        },
-      });
+      if (this.quantity > 0) {
+        this.addToCart({
+          category: this.category,
+          item: {
+            id: this.id,
+            name: this.name,
+            quantity: this.quantity,
+            price: this.price,
+          },
+        });
+      }
     },
   },
 

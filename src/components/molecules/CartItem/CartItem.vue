@@ -50,7 +50,10 @@ export default {
   methods: {
     ...mapActions("cart", ["removeFromCart"]),
     handleRemove() {
-      this.removeFromCart(this.id);
+      this.removeFromCart({
+        id: this.id,
+        quantity: this.quantity,
+      });
     },
   },
 
