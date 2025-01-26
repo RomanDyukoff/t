@@ -1,0 +1,16 @@
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-block: 20px;
+  padding-inline: 5px;
+}
+
+.price > span:first-of-type {
+  font-size: 18px;
+  color: gray;
+}
+
+.price > span:last-of-type {
+  font-size: 20px;
+}

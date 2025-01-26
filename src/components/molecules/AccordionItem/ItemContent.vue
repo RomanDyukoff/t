@@ -1,8 +1,13 @@
 <template>
-  <div :id="`${propId}`" class="details-content">
-    <p class="details-conten__text">{{ propName }} {{ `(${propQuantity})` }}</p>
-    <MonitorInput :value="propPrice" />
-    <CustomButton :icon="cartIcon" label="Купить" color="prime" />
+  <div :id="`${id}`" class="details-content">
+    <p class="details-conten__text">{{ name }} {{ `(${quantity})` }}</p>
+    <MonitorInput :value="price" />
+    <CustomButton
+      :icon="cartIcon"
+      label="Купить"
+      color="prime"
+      @click="handelProduct"
+    />
   </div>
 </template>
 <script>
@@ -33,18 +38,14 @@ export default {
       required: true,
     },
   },
+  methods: {
+    handelProduct() {
+      console.log("kek");
+    },
+  },
+
   data() {
-    const {
-      id: propId,
-      name: propName,
-      price: propPrice,
-      quantity: propQuantity,
-    } = this;
     return {
-      propId,
-      propName,
-      propPrice,
-      propQuantity,
       rightArrow,
       cartIcon,
     };

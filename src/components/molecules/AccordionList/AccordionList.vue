@@ -15,7 +15,6 @@ export default {
   computed: {
     ...mapGetters("product", ["groupedGoods"]),
   },
-  methods: {},
   created() {
     this.$store.dispatch("product/loadGoods");
     this.$store.dispatch("product/loadNames");

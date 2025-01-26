@@ -1,17 +1,12 @@
 <template>
-  <details
-    :id="`${propId}`"
-    class="details"
-    name="list"
-    :style="`--i: ${propId}`"
-  >
+  <details :id="`${id}`" class="details" name="list" :style="`--i: ${id}`">
     <summary class="details__summary">
       <div class="details__icon">
         <img :src="rightArrow" alt="" />
       </div>
-      {{ propName }}
+      {{ name }}
     </summary>
-    <ItemContent v-for="el of propProducts" :key="el.id" v-bind="el" />
+    <ItemContent v-for="el of products" :key="el.id" v-bind="el" />
   </details>
 </template>
 <script>
@@ -40,9 +35,7 @@ export default {
     },
   },
   data() {
-    const { id: propId, name: propName, products: propProducts } = this;
-
-    return { rightArrow, cartIcon, propId, propName, propProducts };
+    return { rightArrow, cartIcon };
   },
 };
 </script>

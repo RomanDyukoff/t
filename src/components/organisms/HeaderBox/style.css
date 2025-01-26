@@ -1,7 +1,8 @@
 .header-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  gap: 20px;
   width: 100%;
 }
 
@@ -22,4 +23,11 @@
 .update-rate .update-rate__timer {
   font-size: 20px;
   width: 60px;
+}
+
+@media (max-width: 1080px) {
+  .header-box {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

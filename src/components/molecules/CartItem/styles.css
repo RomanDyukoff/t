@@ -1,0 +1,20 @@
+.cart-item__title {
+  display: block;
+  background-color: tan;
+  padding-block: 10px;
+  padding-inline: 5px;
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-block: 20px;
+  padding-inline: 5px;
+  border-bottom: 1px solid hsl(260deg 100% 95%);
+}
+
+.item-content__title {
+  flex: 1;
+  margin: 0;
+}

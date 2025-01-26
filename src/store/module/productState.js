@@ -60,7 +60,7 @@ const getters = {
       const group = state.names[groupId];
 
       if (!group) {
-        console.warn(`Group with id ${groupId} not found for good`, good);
+        console.warn(`Группа с идентификаторо ${groupId} не найдена`, good);
         return;
       }
 
@@ -74,7 +74,7 @@ const getters = {
 
       if (!group.B || !group.B[good.T]) {
         console.warn(
-          `Product with id ${good.T} not found in group ${groupId} for good`,
+          `Товар с идентификаторомd ${good.T} не найден в ${groupId} `,
           good
         );
         return;

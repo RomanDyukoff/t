@@ -39,7 +39,6 @@ export default {
   },
   watch: {
     value(newValue) {
-      if (!this.monitoring) return;
       const numericValue = parseFloat(newValue.replace(/[^0-9.-]+/g, ""));
       if (isNaN(numericValue)) {
         this.state = "normal";
