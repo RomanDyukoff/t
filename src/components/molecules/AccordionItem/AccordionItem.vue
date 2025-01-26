@@ -6,7 +6,12 @@
       </div>
       {{ name }}
     </summary>
-    <ItemContent v-for="el of products" :key="el.id" v-bind="el" />
+    <ItemContent
+      v-for="el of products"
+      :key="el.id"
+      :category="name"
+      v-bind="el"
+    />
   </details>
 </template>
 <script>

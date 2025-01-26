@@ -1,27 +1,59 @@
 <template>
-  <div class="cart-item">
-    <span class="cart-item__title">Раздел</span>
+  <div class="cart-item" :id="id">
+    <span class="cart-item__title">{{ category }}</span>
     <div class="item-content">
       <p class="item-content__title">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. At,
-        consequatur.
+        {{ name }}
       </p>
-      <MonitorInput value="1" />
-      <MonitorInput value="$ 18" />
-      <CustomButton :icon="deleteIcon" color="secondary" />
+      <span>Количество: {{ quantity }}</span>
+      <MonitorInput :value="price" />
+      <CustomButton
+        :icon="deleteIcon"
+        color="secondary"
+        @click="handleRemove"
+      />
     </div>
   </div>
 </template>
 <script>
 import deleteIcon from "@/assets/svg/delete-icon.svg";
 import { CustomButton, MonitorInput } from "@/components";
-
+import { mapActions } from "vuex";
 export default {
   name: "CartItem",
   components: {
     CustomButton,
     MonitorInput,
   },
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: Number,
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    price: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+  },
+  methods: {
+    ...mapActions("cart", ["removeFromCart"]),
+    handleRemove() {
+      this.removeFromCart(this.id);
+    },
+  },
+
   data() {
     return { deleteIcon };
   },

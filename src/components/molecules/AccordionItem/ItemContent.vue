@@ -14,6 +14,8 @@
 import rightArrow from "@/assets/svg/right-arrow.svg";
 import cartIcon from "@/assets/svg/cart-icon.svg";
 import { CustomButton, MonitorInput } from "@/components";
+import { mapActions } from "vuex";
+
 export default {
   name: "ItemContent",
   components: {
@@ -37,10 +39,23 @@ export default {
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
+    ...mapActions("cart", ["addToCart"]),
     handelProduct() {
-      console.log("kek");
+      this.addToCart({
+        category: this.category,
+        item: {
+          id: this.id,
+          name: this.name,
+          quantity: this.quantity,
+          price: this.price,
+        },
+      });
     },
   },
 
