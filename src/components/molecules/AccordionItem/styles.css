@@ -19,7 +19,7 @@ summary {
 
 .details::details-content {
   display: block;
-  padding-inline: 16px;
+  /* padding-inline: 16px; */
   block-size: 0;
   overflow: hidden;
   transition-property: block-size, content-visibility, padding-block;
@@ -30,12 +30,15 @@ summary {
 .details[open]::details-content {
   block-size: auto;
   block-size: calc-size(auto, size);
-  padding-block: 16px;
+  /* padding-block: 16px; */
 }
 
 summary::marker {
   content: none;
-  opacity: 0;
+}
+
+summary::-webkit-details-marker {
+  display: none;
 }
 
 summary .details__icon {
@@ -63,7 +66,10 @@ summary .details__icon > img {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  padding-inline: 16px;
+  padding-block: 10px;
 }
+
 .details-content.disable {
   position: none;
   opacity: 0.3;

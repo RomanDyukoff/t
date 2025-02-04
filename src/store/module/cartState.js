@@ -11,7 +11,6 @@ const mutations = {
     if (productInCart) {
       productInCart.quantity += 1;
     } else {
-      console.log(item);
       state.carts.push({
         ...item,
         category,

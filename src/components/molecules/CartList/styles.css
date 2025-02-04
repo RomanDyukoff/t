@@ -1,3 +1,8 @@
+.cart {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
 .price {
   display: flex;
   flex-direction: column;

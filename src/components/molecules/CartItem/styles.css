@@ -1,8 +1,8 @@
 .cart-item__title {
   display: block;
   background-color: tan;
-  padding-block: 10px;
-  padding-inline: 5px;
+  padding: 20px;
+  font-weight: 700;
 }
 
 .item-content {
