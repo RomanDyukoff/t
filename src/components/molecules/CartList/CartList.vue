@@ -3,7 +3,7 @@
     <CartItem v-for="(item, index) in carts" :key="index" v-bind="item" />
     <div class="price">
       <span>Общая стоимость:</span>
-      <span>{{ formattedTotalPrice }}</span>
+      <span>{{ cartTotalPrice }}</span>
     </div>
   </div>
 </template>
@@ -17,9 +17,6 @@ export default {
   },
   computed: {
     ...mapGetters("cart", ["carts", "cartTotalPrice"]),
-    formattedTotalPrice() {
-      return `₽ ${this.cartTotalPrice.toFixed(2)}`;
-    },
   },
 };
 </script>

@@ -11,6 +11,7 @@ const mutations = {
     if (productInCart) {
       productInCart.quantity += 1;
     } else {
+      console.log(item);
       state.carts.push({
         ...item,
         category,
@@ -31,6 +32,14 @@ const mutations = {
       }
     }
   },
+  UPDATE_CART_PRICES(state, { goods, exchangeRate }) {
+    state.carts.forEach((cartItem) => {
+      const product = goods.find((good) => good.T === cartItem.id);
+      if (product) {
+        cartItem.price = `₽ ${product.C * exchangeRate}`;
+      }
+    });
+  },
 };
 
 const actions = {
@@ -50,16 +59,28 @@ const actions = {
       { root: true }
     );
   },
+  updateCartPrices({ commit, rootState }) {
+    commit("UPDATE_CART_PRICES", {
+      goods: rootState.product.goods,
+      exchangeRate: rootState.product.exchangeRate,
+    });
+  },
 };
 
 const getters = {
   carts: (state) => state.carts,
-  cartTotalPrice: (state) =>
-    state.carts.reduce((total, item) => {
+  cartTotalPrice: (state) => {
+    const res = state.carts.reduce((total, item) => {
       const productPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
       const itemTotalPrice = productPrice * item.quantity;
       return total + itemTotalPrice;
-    }, 0),
+    }, 0);
+
+    return res.toLocaleString("ru-RU", {
+      style: "currency",
+      currency: "RUB",
+    });
+  },
 };
 
 const cartState = { namespaced: true, state, mutations, actions, getters };

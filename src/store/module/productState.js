@@ -49,6 +49,7 @@ const actions = {
     try {
       const newRate = getRandomExchangeRate();
       commit("setExchangeRate", newRate);
+      dispatch("cart/updateCartPrices", null, { root: true });
       await dispatch("product/loadGoods", null, { root: true });
     } catch (error) {
       console.error("Error updating data:", error.message);

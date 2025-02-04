@@ -35,6 +35,7 @@ summary {
 
 summary::marker {
   content: none;
+  opacity: 0;
 }
 
 summary .details__icon {
