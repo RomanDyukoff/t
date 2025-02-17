@@ -1,16 +1,8 @@
 <template>
-  <div
-    :id="`${id}`"
-    :class="`details-content ${quantity === 0 ? 'disable' : ''}`"
-  >
+  <div :id="`${id}`" :class="`details-content ${quantity === 0 ? 'disable' : ''}`">
     <p class="details-conten__text">{{ name }} {{ `(${quantity})` }}</p>
     <MonitorInput :value="price" />
-    <CustomButton
-      :icon="cartIcon"
-      label="Купить"
-      color="prime"
-      @click="handelProduct"
-    />
+    <CustomButton :icon="cartIcon" label="Купить" color="prime" @click="handelProduct" />
   </div>
 </template>
 <script>
@@ -39,7 +31,7 @@ export default {
       required: true,
     },
     price: {
-      type: String,
+      type: Number,
       required: true,
     },
     category: {

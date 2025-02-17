@@ -7,11 +7,7 @@
       </p>
       <span>Количество: {{ quantity }}</span>
       <MonitorInput :value="price" />
-      <CustomButton
-        :icon="deleteIcon"
-        color="secondary"
-        @click="handleRemove"
-      />
+      <CustomButton :icon="deleteIcon" color="secondary" @click="handleRemove" />
     </div>
   </div>
 </template>
@@ -39,7 +35,7 @@ export default {
       required: true,
     },
     price: {
-      type: String,
+      type: Number,
       required: true,
     },
     category: {

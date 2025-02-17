@@ -1,6 +1,6 @@
 <template>
   <div :class="inputClasses">
-    <input class="read-input" type="text" :value="inputValue" readonly />
+    <input class="read-input" type="text" :value="`₽ ${inputValue}`" readonly />
   </div>
 </template>
 <script>
@@ -25,37 +25,31 @@ export default {
   },
   computed: {
     inputClasses() {
-      if (this.monitoring) {
-        return {
-          read: true,
-          normal: this.state === "normal",
-          increased: this.state === "increased",
-          decreased: this.state === "decreased",
-        };
-      } else {
-        return { read: true };
-      }
+      return this.monitoring ? {
+        read: true,
+        normal: this.state === "normal",
+        increased: this.state === "increased",
+        decreased: this.state === "decreased"
+      } : { read: true };
     },
   },
   watch: {
     value(newValue) {
-      const numericValue = parseFloat(newValue.replace(/[^0-9.-]+/g, ""));
-      if (isNaN(numericValue)) {
-        this.state = "normal";
-      } else {
-        this.state =
-          this.previousValue > numericValue
-            ? "decreased"
-            : this.previousValue < numericValue
-            ? "increased"
-            : "normal";
-        this.previousValue = numericValue;
+      if (this.monitoring) {
+        this.state = !this.previousValue ?
+          "normal" :
+          (this.previousValue > newValue ?
+            "decreased" :
+            "increased"
+          );
+        this.previousValue = newValue;
       }
+
       this.inputValue = newValue;
     },
   },
   mounted() {
-    this.previousValue = parseFloat(this.value.replace(/[^0-9.-]+/g, ""));
+    this.previousValue = this.value;
   },
 };
 </script>

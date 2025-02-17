@@ -2,7 +2,7 @@
   <div class="header-box">
     <div class="exchange-rate">
       <span class="title">Курс:</span>
-      <MonitorInput :value="`₽ ${exchangeRate}`" monitoring />
+      <MonitorInput :value="exchangeRate" monitoring />
     </div>
     <div class="update-rate">
       <span class="title">Обновление через:</span>
